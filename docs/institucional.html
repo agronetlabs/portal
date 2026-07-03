@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AgroNet Labs — Institutional Data Room</title>
+  <style>
+    :root{
+      --bg0:#06160f;
+      --bg1:#0b2a1a;
+      --card:#0c2016;
+      --line:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --accent:#2fe39b;
+      --gold:#d6b35a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(47,227,155,.22), transparent 60%),
+        radial-gradient(900px 600px at 90% 25%, rgba(214,179,90,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+    }
+    header{
+      padding:52px 20px 28px;
+      border-bottom:1px solid var(--line);
+    }
+    .wrap{max-width:1100px;margin:0 auto}
+    .kicker{
+      color:var(--gold);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+    h1{
+      margin:12px 0 10px;
+      font-size:36px;
+      line-height:1.1;
+    }
+    .sub{
+      color:var(--muted);
+      max-width:900px;
+      font-size:15px;
+      line-height:1.6;
+    }
+    main{padding:26px 20px 64px}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:16px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+    }
+    .col-12{grid-column:span 12}
+    .col-6{grid-column:span 6}
+    .col-4{grid-column:span 4}
+    @media (max-width:900px){
+      .col-6,.col-4{grid-column:span 12}
+      h1{font-size:30px}
+    }
+    h2{
+      margin:0 0 10px;
+      font-size:16px;
+      color:#fff;
+    }
+    p,li{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.55;
+    }
+    ul{padding-left:18px;margin:8px 0}
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    a:hover{text-decoration:underline}
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      padding:6px 12px;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 14px rgba(47,227,155,.5);
+    }
+    .gold{
+      background:var(--gold);
+      box-shadow:0 0 14px rgba(214,179,90,.35);
+    }
+    .link-list li{
+      margin:8px 0;
+    }
+    footer{
+      padding:24px 20px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:12px;
+    }
+    code{color:#d9ffef}
+  </style>
+<script src="https://www.kimi.com/sdk-seed.js" defer=""></script></head>
+<body>
+  <!-- Navigation -->
+  <nav style="position:sticky;top:0;z-index:100;background:rgba(6,22,15,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px 20px">
+    <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px">
+      <a href="./index.html" style="display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:#fff;text-decoration:none">
+        AgroNet<span style="color:var(--accent)">Labs</span>
+      </a>
+      <div style="display:flex;gap:24px;align-items:center">
+        <a href="./index.html#protocol" style="color:var(--muted);text-decoration:none;font-size:14px">Protocol</a>
+        <a href="./index.html#ecosystem" style="color:var(--muted);text-decoration:none;font-size:14px">Ecosystem</a>
+        <a href="./governanca.html" style="color:var(--muted);text-decoration:none;font-size:14px">Governance</a>
+        <a href="./institucional.html" style="color:var(--accent);text-decoration:none;font-size:14px">Data Room</a>
+        <a href="./audit.html" style="color:var(--muted);text-decoration:none;font-size:14px">Audit</a>
+        <a href="https://github.com/agronetlabs/ATF-AI" target="_blank" style="background:var(--accent);color:#000;padding:8px 16px;border-radius:8px;font-weight:600;text-decoration:none;font-size:14px">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">AgroNet Labs LLC</div>
+    <h1>Institutional Data Room</h1>
+    <p class="sub">
+      Public-safe access to governance, controls, and operating materials.
+      Sensitive documents, identities, and treasury details are shared only under NDA.
+    </p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+      <span class="pill"><span class="dot"></span> Live Infrastructure</span>
+      <span class="pill"><span class="dot gold"></span> Governance &amp; Controls</span>
+      <span class="pill">Status: <strong style="color:#fff">Operational</strong></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="grid">
+
+      <section class="card col-12">
+        <h2>Overview</h2>
+        <p>
+          AgroNet Labs operates an AI-governed compliance and asset-validation infrastructure
+          designed for institutional use. This data room centralizes the materials required
+          to understand how the system is governed, controlled, and audited.
+        </p>
+      </section>
+
+      <section class="card col-6">
+        <h2>Core Governance</h2>
+        <ul class="link-list">
+          <li>
+            <a href="./governance.html">Governance Map</a> —
+            Roles, approval matrix, treasury controls, and decision bodies.
+          </li>
+          <li>
+            <a href="./audit.html">External Audit Checklist</a> —
+            Auditor-ready controls, evidence map, and operational readiness.
+          </li>
+        </ul>
+      </section>
+
+      <section class="card col-6">
+        <h2>Founders &amp; Narrative</h2>
+        <ul class="link-list">
+          <li>
+            <a href="./founders-deck.mp4">Founders Deck (MP4)</a> —
+            Executive narrative for co-founders and institutional partners.
+          </li>
+          <li>
+            <a href="./founders-deck.pdf">Founders Deck (PDF)</a> —
+            Static reference version (same content).
+          </li>
+        </ul>
+      </section>
+
+      <section class="card col-6">
+        <h2>Technical &amp; Operational</h2>
+        <ul class="link-list">
+          <li>
+            <span>Infrastructure:</span> AI-governed validation, ledger rules, on-chain settlement.
+          </li>
+          <li>
+            <span>Liquidity Controls:</span>
+            <code>SAFE_PULL_LIMIT</code>, <code>MAX_PULL_RATIO</code>, per-channel <code>ledger_rules</code>.
+          </li>
+          <li>
+            <span>Audit Trail:</span>
+            Immutable logs with <code>validation_status</code>,
+            <code>validation_reason</code> and <code>audit_hash</code>.
+          </li>
+        </ul>
+      </section>
+
+      <section class="card col-6">
+        <h2>Access &amp; Disclosure</h2>
+        <ul>
+          <li>
+            This page is public-safe and intentionally high-level.
+          </li>
+          <li>
+            Cap table, identities, wallet addresses, and bank specifics are NDA-only.
+          </li>
+          <li>
+            All materials are versioned; no ad-hoc or off-record decisions.
+          </li>
+        </ul>
+      </section>
+
+      <section class="card col-12">
+        <h2>Contact &amp; Reference</h2>
+        <p>
+          Founder profile and public references:
+          <a href="https://agronet.bio" target="_blank" rel="noopener">https://agronet.bio</a>
+        </p>
+        <p>
+          This data room is designed to answer one question clearly:
+          <strong>“Who decides, under which limits, and with what proof?”</strong>
+        </p>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    AgroNet Labs LLC — Institutional Data Room (Public-Safe).
+    Confidential materials disclosed only under NDA.
+  </div>
+</footer>
+
+
+
+</body></html>

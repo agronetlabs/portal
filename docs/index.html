@@ -1,0 +1,691 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="ATF-AI — Autonomous Trust Framework for AI-Governed DAOs. Carbon credits with real traceability. No greenwashing."/>
+  <title>AgroNet Labs — ATF-AI Autonomous Trust Framework</title>
+  <style>
+    :root{
+      --bg0:#06160f;
+      --bg1:#0b2a1a;
+      --card:#0c2016;
+      --line:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --accent:#2fe39b;
+      --gold:#d6b35a;
+      --blue:#3b82f6;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(47,227,155,.22), transparent 60%),
+        radial-gradient(900px 600px at 90% 25%, rgba(214,179,90,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      min-height:100vh;
+    }
+    
+    /* Navigation */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(6,22,15,.85);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+      padding:12px 20px;
+    }
+    .nav-wrap{
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      font-size:18px;
+      color:#fff;
+      text-decoration:none;
+    }
+    .logo span{color:var(--accent)}
+    .nav-links{
+      display:flex;
+      gap:28px;
+      align-items:center;
+    }
+    .nav-links a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:14px;
+      transition:color .2s;
+    }
+    .nav-links a:hover{color:var(--accent)}
+    .nav-cta{
+      background:var(--accent);
+      color:#000 !important;
+      padding:8px 16px;
+      border-radius:8px;
+      font-weight:600;
+    }
+    .mobile-menu{display:none}
+    @media(max-width:900px){
+      .nav-links{display:none}
+      .mobile-menu{display:block;color:var(--text);font-size:24px;background:none;border:none;cursor:pointer}
+    }
+    
+    /* Hero */
+    .hero{
+      padding:80px 20px 60px;
+      text-align:center;
+    }
+    .hero-wrap{max-width:900px;margin:0 auto}
+    .version-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      padding:6px 14px;
+      border-radius:999px;
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:20px;
+    }
+    .version-badge .dot{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 14px rgba(47,227,155,.5);
+    }
+    h1{
+      margin:0 0 16px;
+      font-size:52px;
+      line-height:1.1;
+      font-weight:800;
+    }
+    h1 span{display:block;color:var(--accent)}
+    .hero-sub{
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.6;
+      max-width:700px;
+      margin:0 auto 32px;
+    }
+    .hero-cta{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 24px;
+      border-radius:10px;
+      font-size:15px;
+      font-weight:600;
+      text-decoration:none;
+      transition:all .2s;
+    }
+    .btn-primary{
+      background:var(--accent);
+      color:#000;
+    }
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(47,227,155,.3)}
+    .btn-secondary{
+      background:transparent;
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+    .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+    
+    /* Badges */
+    .badges{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:32px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 12px;
+      border-radius:6px;
+      font-size:12px;
+      font-weight:500;
+    }
+    .badge-green{background:rgba(47,227,155,.15);color:var(--accent);border:1px solid rgba(47,227,155,.3)}
+    .badge-gold{background:rgba(214,179,90,.15);color:var(--gold);border:1px solid rgba(214,179,90,.3)}
+    .badge-blue{background:rgba(59,130,246,.15);color:var(--blue);border:1px solid rgba(59,130,246,.3)}
+    
+    /* Sections */
+    section{padding:60px 20px}
+    .wrap{max-width:1100px;margin:0 auto}
+    .section-header{
+      text-align:center;
+      margin-bottom:40px;
+    }
+    .section-header h2{
+      margin:0 0 12px;
+      font-size:32px;
+    }
+    .section-header p{
+      color:var(--muted);
+      font-size:16px;
+      max-width:600px;
+      margin:0 auto;
+    }
+    
+    /* Cards Grid */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:16px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:24px;
+    }
+    .col-12{grid-column:span 12}
+    .col-6{grid-column:span 6}
+    .col-4{grid-column:span 4}
+    @media(max-width:900px){
+      .col-6,.col-4{grid-column:span 12}
+      h1{font-size:36px}
+    }
+    
+    /* Feature Cards */
+    .feature-card h3{
+      margin:0 0 12px;
+      font-size:20px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .feature-card h3 .icon{
+      width:40px;height:40px;
+      border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:20px;
+    }
+    .feature-card p{color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 16px}
+    .feature-card ul{margin:0;padding-left:18px}
+    .feature-card li{color:var(--muted);font-size:13px;margin:6px 0}
+    
+    /* Flow Diagram */
+    .flow{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+      padding:30px 0;
+    }
+    .flow-step{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:16px 20px;
+      text-align:center;
+      min-width:140px;
+    }
+    .flow-step .num{
+      width:28px;height:28px;
+      border-radius:50%;
+      background:var(--accent);
+      color:#000;
+      font-size:14px;font-weight:700;
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 10px;
+    }
+    .flow-step h4{margin:0 0 6px;font-size:14px}
+    .flow-step p{margin:0;font-size:12px;color:var(--muted)}
+    .flow-arrow{color:var(--accent);font-size:24px}
+    
+    /* Ecosystem */
+    .eco-card{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:20px;
+      background:rgba(0,0,0,.2);
+    }
+    .eco-card h4{
+      margin:0 0 10px;
+      font-size:16px;
+      display:flex;align-items:center;gap:8px;
+    }
+    .eco-card h4 .status{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--accent);
+    }
+    .eco-card p{color:var(--muted);font-size:13px;margin:0 0 12px}
+    .eco-card a{color:var(--accent);font-size:13px;text-decoration:none}
+    .eco-card a:hover{text-decoration:underline}
+    
+    /* Footer */
+    footer{
+      padding:40px 20px;
+      border-top:1px solid var(--line);
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:40px;
+      max-width:1100px;
+      margin:0 auto;
+    }
+    @media(max-width:900px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.footer-grid{grid-template-columns:1fr}}
+    .footer-col h4{margin:0 0 16px;font-size:14px;color:var(--gold);text-transform:uppercase;letter-spacing:.1em}
+    .footer-col a{display:block;color:var(--muted);text-decoration:none;font-size:13px;margin:8px 0;transition:color .2s}
+    .footer-col a:hover{color:var(--accent)}
+    .footer-bottom{
+      max-width:1100px;
+      margin:40px auto 0;
+      padding-top:20px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+    
+    /* Separator */
+    .separator{
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--line), transparent);
+      margin:40px 0;
+    }
+    
+    /* Brazil Notice */
+    .brazil-notice{
+      background:rgba(214,179,90,.08);
+      border:1px solid rgba(214,179,90,.2);
+      border-radius:12px;
+      padding:16px 20px;
+      margin:20px 0;
+    }
+    .brazil-notice p{margin:0;font-size:13px;color:var(--muted)}
+    .brazil-notice strong{color:var(--gold)}
+  </style>
+<script src="https://www.kimi.com/sdk-seed.js" defer=""></script></head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-wrap">
+    <a href="/" class="logo">AgroNet<span>Labs</span></a>
+    <div class="nav-links">
+      <a href="#protocol">Protocol</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="./governanca.html">Governance</a>
+      <a href="./institucional.html">Data Room</a>
+      <a href="./audit.html">Audit</a>
+      <a href="https://github.com/agronetlabs/ATF-AI" target="_blank" class="nav-cta">GitHub</a>
+    </div>
+    <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-wrap">
+    <div class="version-badge">
+      <span class="dot"></span>
+      ATF-AI v1.0.0 — Open Protocol
+    </div>
+    <h1>ATF-AI <span>Autonomous Trust Framework</span></h1>
+    <p class="hero-sub">
+      Open compliance protocol for AI-governed DAOs. Carbon credits with real traceability — 
+      no greenwashing, just code.
+    </p>
+    <div class="hero-cta">
+      <a href="https://github.com/agronetlabs/ATF-AI" target="_blank" class="btn btn-primary">View on GitHub</a>
+      <a href="#protocol" class="btn btn-secondary">Read Documentation</a>
+      <a href="https://cexs.io" target="_blank" class="btn btn-secondary">CEXS Exchange</a>
+    </div>
+    <div class="badges">
+      <span class="badge badge-green">✓ ISO 20022 Compatible</span>
+      <span class="badge badge-gold">✓ SWIFT Ready</span>
+      <span class="badge badge-blue">✓ ERC-8040 Aligned</span>
+      <span class="badge badge-green">✓ AI-Governed</span>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- Three Pillars Section -->
+<section>
+  <div class="wrap">
+    <div class="section-header">
+      <h2>Built for Institutions. Designed to Execute.</h2>
+      <p>Native AI infrastructure to issue, move, and audit real-world assets under strict blockchain compliance.</p>
+    </div>
+    
+    <div class="grid">
+      <div class="card col-4 feature-card">
+        <h3><span class="icon" style="background:rgba(47,227,155,.15)">◆</span> AI-Native Core</h3>
+        <p>Decisions, routing, and attestations powered by AI governance (ATF).</p>
+        <ul>
+          <li>Multi-model validation</li>
+          <li>Deterministic audit logs</li>
+          <li>Policy-as-code</li>
+        </ul>
+      </div>
+      <div class="card col-4 feature-card">
+        <h3><span class="icon" style="background:rgba(59,130,246,.15)">◆</span> ESG &amp; Compliance</h3>
+        <p>in-toto provenance + OpenTelemetry = end-to-end trust in supply chains.</p>
+        <ul>
+          <li>Traceable lifecycle</li>
+          <li>Regulator-friendly</li>
+          <li>Standardized metadata</li>
+        </ul>
+      </div>
+      <div class="card col-4 feature-card">
+        <h3><span class="icon" style="background:rgba(214,179,90,.15)">◆</span> RWA Tokenization</h3>
+        <p>Issue and manage asset-backed instruments with institutional controls.</p>
+        <ul>
+          <li>From issuance to custody</li>
+          <li>Cross-chain bridges</li>
+          <li>SWIFT-ready mapping</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- AI Manifesto Section -->
+<section>
+  <div class="wrap">
+    <div class="section-header">
+      <h2>Our AI Manifesto</h2>
+      <p>Our intelligence is built on a foundation of ethical principles to ensure a safer, more efficient, and sustainable future.</p>
+    </div>
+    
+    <div class="grid">
+      <div class="card col-4 feature-card">
+        <h3><span class="icon" style="background:rgba(47,227,155,.15)">🔍</span> Transparency</h3>
+        <p>Every decision and data point generated by our AI is auditable, providing an immutable record of provenance from field to table.</p>
+      </div>
+      <div class="card col-4 feature-card">
+        <h3><span class="icon" style="background:rgba(59,130,246,.15)">🔒</span> Security &amp; Autonomy</h3>
+        <p>We empower producers with full control over their data, using end-to-end encryption to ensure security and sovereignty.</p>
+      </div>
+      <div class="card col-4 feature-card">
+        <h3><span class="icon" style="background:rgba(214,179,90,.15)">🌱</span> Sustainability</h3>
+        <p>Our technology is designed to optimize resources, promote sustainable practices, and provide verifiable metrics for the entire production chain.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- Protocol Section -->
+<section id="protocol">
+  <div class="wrap">
+    <div class="section-header">
+      <h2>How ATF-AI Works</h2>
+      <p>From carbon project to verified token — with cryptographic proof at every step.</p>
+    </div>
+    
+    <div class="flow">
+      <div class="flow-step">
+        <div class="num">1</div>
+        <h4>Carbon Project</h4>
+        <p>Field data, IoT, satellite</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="num">2</div>
+        <h4>in-toto Provenance</h4>
+        <p>Cryptographic record</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="num">3</div>
+        <h4>AI Verification</h4>
+        <p>Compliance check</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <div class="num">4</div>
+        <h4>CARB Token</h4>
+        <p>Fully traceable</p>
+      </div>
+    </div>
+    
+    <div class="grid" style="margin-top:40px">
+      <div class="card col-4 feature-card">
+        <h3><span class="icon" style="background:rgba(47,227,155,.15)">🔐</span> in-toto Provenance</h3>
+        <p>Every step cryptographically signed and verifiable. No gaps, no trust assumptions.</p>
+        <ul>
+          <li>Immutable audit trail</li>
+          <li>Supply chain verification</li>
+          <li>Regulator-friendly</li>
+        </ul>
+      </div>
+      <div class="card col-4 feature-card">
+        <h3><span class="icon" style="background:rgba(59,130,246,.15)">📊</span> OpenTelemetry</h3>
+        <p>Standardized telemetry for real-time monitoring and automated compliance checks.</p>
+        <ul>
+          <li>Real-time data collection</li>
+          <li>Automated alerts</li>
+          <li>Standardized metrics</li>
+        </ul>
+      </div>
+      <div class="card col-4 feature-card">
+        <h3><span class="icon" style="background:rgba(214,179,90,.15)">🤖</span> AI Governance</h3>
+        <p>No human voting. AI-certified compliance based on verifiable data, not promises.</p>
+        <ul>
+          <li>Deterministic decisions</li>
+          <li>Zero tolerance greenwashing</li>
+          <li>Full auditability</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- Ecosystem Section -->
+<section id="ecosystem">
+  <div class="wrap">
+    <div class="section-header">
+      <h2>Ecosystem</h2>
+      <p>Built on ATF-AI. Connected. Transparent.</p>
+    </div>
+    
+    <div class="grid">
+      <div class="col-6">
+        <div class="eco-card">
+          <h4><span class="status"></span> ATF-AI Protocol</h4>
+          <p>Open-source compliance framework. GitHub repository with full specification, API docs, and reference implementation.</p>
+          <a href="https://github.com/agronetlabs/ATF-AI" target="_blank">github.com/agronetlabs/ATF-AI →</a>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="eco-card">
+          <h4><span class="status"></span> ERC-8040 Standard</h4>
+          <p>Ethereum token standard implementing ATF-AI principles. ESG scoring embedded on-chain with full provenance.</p>
+          <a href="https://github.com/agronetlabs/erc-8040-ecosystem" target="_blank">github.com/agronetlabs/erc-8040 →</a>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="eco-card">
+          <h4><span class="status" style="background:var(--gold)"></span> CEXS.io Exchange</h4>
+          <p>Institutional-grade exchange for ATF-AI certified tokens. Launching Q2 2026.</p>
+          <a href="https://cexs.io" target="_blank">cexs.io →</a>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="eco-card">
+          <h4><span class="status" style="background:var(--blue)"></span> AgroNet Network</h4>
+          <p>Podcasts and content on sovereign AI, ESG tokenization, and regulated blockchain.</p>
+          <a href="https://agronet.network" target="_blank">agronet.network →</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="brazil-notice">
+      <p><strong>Note:</strong> Products operating in Brazil (AgroNet Caminhoneiro, GeoIA) are separate entities and not connected to the ATF-AI protocol or international operations.</p>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- Build Provenance Section -->
+<section>
+  <div class="wrap">
+    <div class="section-header">
+      <h2>Build Provenance</h2>
+      <p>Every byte carries a purpose: transparency, compliance, and interoperability. Every build is attested with in-toto and fully traceable with OpenTelemetry.</p>
+    </div>
+    
+    <div class="card" style="max-width:700px;margin:0 auto">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+        <div style="width:40px;height:40px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;color:#000">A</div>
+        <div>
+          <div style="font-weight:600">AGROPAY CORE</div>
+          <div style="font-size:13px;color:var(--muted)">Build Certificate (preview)</div>
+        </div>
+      </div>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div style="background:rgba(0,0,0,.2);padding:16px;border-radius:10px">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:8px">Latest Digest</div>
+          <code style="font-size:11px;word-break:break-all">201672f1605f30a361254cacbb073d8de7b806ba392ef82ca4723e17f4d39dd6</code>
+        </div>
+        <div style="background:rgba(0,0,0,.2);padding:16px;border-radius:10px">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:8px">Previous Digest</div>
+          <code style="font-size:11px;word-break:break-all">f81783bcda0f70958b05732651fb7ca30a0cef4c3acf0bf45ca4dfa3e7a23645</code>
+        </div>
+      </div>
+      
+      <ul style="margin:0;padding-left:18px;font-size:13px;color:var(--muted)">
+        <li>Exported: manifest, config, attestation</li>
+        <li>Registry: ghcr.io/agronetlabs/agropay-core</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- Governance &amp; Data Room -->
+<section>
+  <div class="wrap">
+    <div class="section-header">
+      <h2>Institutional Access</h2>
+      <p>Governance, controls, and audit materials for institutional partners.</p>
+    </div>
+    
+    <div class="grid">
+      <div class="card col-6">
+        <h3 style="margin:0 0 16px;font-size:18px">🛡️ Governance</h3>
+        <p style="color:var(--muted);font-size:14px;margin:0 0 16px">
+          Roles, approval matrix, treasury controls, and decision bodies. 
+          Designed for institutional clarity.
+        </p>
+        <a href="./governanca.html" style="color:var(--accent);text-decoration:none;font-size:14px">View Governance →</a>
+      </div>
+      <div class="card col-6">
+        <h3 style="margin:0 0 16px;font-size:18px">📁 Data Room</h3>
+        <p style="color:var(--muted);font-size:14px;margin:0 0 16px">
+          Public-safe access to governance materials, controls, and operating documents. 
+          NDA required for sensitive details.
+        </p>
+        <a href="./institucional.html" style="color:var(--accent);text-decoration:none;font-size:14px">Enter Data Room →</a>
+      </div>
+      <div class="card col-12">
+        <h3 style="margin:0 0 16px;font-size:18px">✓ External Audit Checklist</h3>
+        <p style="color:var(--muted);font-size:14px;margin:0 0 16px">
+          Auditor-facing checklist for institutional readiness. Evidence map: what exists, 
+          where it lives, and how it is verified.
+        </p>
+        <a href="./audit.html" style="color:var(--accent);text-decoration:none;font-size:14px">View Audit Checklist →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section style="text-align:center;padding:80px 20px">
+  <div class="wrap">
+    <h2 style="margin:0 0 16px;font-size:32px">Investor Access</h2>
+    <p style="color:var(--muted);font-size:16px;max-width:500px;margin:0 auto 32px">
+      Request a 15-minute demo. See AgroNet AI in action — provenance, telemetry, and end-to-end issuance flow. No slides. Just product.
+    </p>
+    <a href="https://calendly.com/leandro-agronet/30min" target="_blank" class="btn btn-primary" style="font-size:16px;padding:14px 32px">Request Investor Demo</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Protocol</h4>
+      <a href="https://github.com/agronetlabs/ATF-AI" target="_blank">GitHub Repository</a>
+      <a href="https://github.com/agronetlabs/ATF-AI/blob/main/README.md" target="_blank">Documentation</a>
+      <a href="https://github.com/agronetlabs/ATF-AI/blob/main/specs" target="_blank">Specifications</a>
+      <a href="https://github.com/agronetlabs/ATF-AI/blob/main/api" target="_blank">API Reference</a>
+    </div>
+    <div class="footer-col">
+      <h4>Ecosystem</h4>
+      <a href="https://github.com/agronetlabs/erc-8040-ecosystem" target="_blank">ERC-8040</a>
+      <a href="https://cexs.io" target="_blank">CEXS.io</a>
+      <a href="https://agronet.network" target="_blank">AgroNet Network</a>
+      <a href="./institucional.html">Data Room</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="./governanca.html">Governance</a>
+      <a href="./audit.html">Audit Checklist</a>
+      <a href="https://agronet.bio" target="_blank">Founder Profile</a>
+      <a href="https://calendly.com/leandro-agronet/30min" target="_blank">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="https://github.com/agronetlabs/ATF-AI/blob/main/LICENSE" target="_blank">License (MIT/Apache-2.0)</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 AgroNet Labs LLC — ATF-AI Protocol. Open source under MIT/Apache-2.0.
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(){
+    const links = document.querySelector('.nav-links');
+    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    links.style.position = 'absolute';
+    links.style.top = '60px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'var(--bg0)';
+    links.style.padding = '20px';
+    links.style.flexDirection = 'column';
+    links.style.borderBottom = '1px solid var(--line)';
+  }
+</script>
+
+
+
+</body></html>

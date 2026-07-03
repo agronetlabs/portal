@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AgroNet Labs — Governance</title>
+  <style>
+    :root{
+      --bg0:#06160f;
+      --bg1:#0b2a1a;
+      --card:#0c2016;
+      --line:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --accent:#2fe39b;    /* green */
+      --gold:#d6b35a;      /* gold */
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 700px at 15% 10%, rgba(47,227,155,.22), transparent 60%),
+                  radial-gradient(900px 600px at 90% 25%, rgba(214,179,90,.16), transparent 55%),
+                  linear-gradient(180deg, var(--bg0), var(--bg1));
+    }
+    header{
+      padding:44px 20px 24px;
+      border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(0,0,0,.25), transparent);
+    }
+    .wrap{max-width:1100px;margin:0 auto}
+    .kicker{color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+    h1{margin:10px 0 10px;font-size:34px;line-height:1.1}
+    .sub{color:var(--muted);max-width:880px;font-size:15px;line-height:1.6}
+    main{padding:22px 20px 56px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+    }
+    .card h2{margin:0 0 10px;font-size:16px;color:#fff}
+    .card p, .card li{color:var(--muted);font-size:14px;line-height:1.55}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid var(--line);
+      padding:6px 10px;border-radius:999px;
+      color:var(--muted);font-size:12px
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px rgba(47,227,155,.5)}
+    .gold{background:var(--gold);box-shadow:0 0 14px rgba(214,179,90,.35)}
+    .col-12{grid-column:span 12}
+    .col-8{grid-column:span 8}
+    .col-6{grid-column:span 6}
+    .col-4{grid-column:span 4}
+    .col-3{grid-column:span 3}
+    @media (max-width:900px){
+      .col-8,.col-6,.col-4,.col-3{grid-column:span 12}
+      h1{font-size:28px}
+    }
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+    th{font-size:12px;color:var(--gold);text-transform:uppercase;letter-spacing:.12em}
+    td{font-size:13px;color:var(--muted)}
+    .tag{
+      display:inline-block;border:1px solid var(--line);
+      padding:2px 8px;border-radius:999px;font-size:12px;color:var(--text)
+    }
+    .ok{color:rgba(47,227,155,.92)}
+    .warn{color:rgba(214,179,90,.95)}
+    footer{
+      padding:22px 20px;border-top:1px solid var(--line);
+      color:var(--muted);font-size:12px
+    }
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    code{color:#d9ffeF}
+  </style>
+<script src="https://www.kimi.com/sdk-seed.js" defer=""></script></head>
+<body>
+  <!-- Navigation -->
+  <nav style="position:sticky;top:0;z-index:100;background:rgba(6,22,15,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px 20px">
+    <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px">
+      <a href="./index.html" style="display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:#fff;text-decoration:none">
+        AgroNet<span style="color:var(--accent)">Labs</span>
+      </a>
+      <div style="display:flex;gap:24px;align-items:center">
+        <a href="./index.html#protocol" style="color:var(--muted);text-decoration:none;font-size:14px">Protocol</a>
+        <a href="./index.html#ecosystem" style="color:var(--muted);text-decoration:none;font-size:14px">Ecosystem</a>
+        <a href="./governanca.html" style="color:var(--accent);text-decoration:none;font-size:14px">Governance</a>
+        <a href="./institucional.html" style="color:var(--muted);text-decoration:none;font-size:14px">Data Room</a>
+        <a href="./audit.html" style="color:var(--muted);text-decoration:none;font-size:14px">Audit</a>
+        <a href="https://github.com/agronetlabs/ATF-AI" target="_blank" style="background:var(--accent);color:#000;padding:8px 16px;border-radius:8px;font-weight:600;text-decoration:none;font-size:14px">GitHub</a>
+      </div>
+    </div>
+  </nav>
+  <header>
+    <div class="wrap">
+      <div class="kicker">AgroNet Labs LLC</div>
+      <h1>Governance</h1>
+      <p class="sub">
+        This page defines who can decide what, how execution is authorized, and how safety controls are enforced.
+        It is designed for institutional clarity: simple roles, explicit approvals, auditable logs.
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+        <span class="pill"><span class="dot"></span> Operational Governance</span>
+        <span class="pill"><span class="dot gold"></span> Treasury &amp; Risk Controls</span>
+        <span class="pill">Version: <strong style="color:#fff">v1.0</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="grid">
+        <section class="card col-12">
+          <h2>Governance Principles</h2>
+          <ul>
+            <li><span class="tag">Truth</span> Decisions must be explainable and traceable to logs, rules, and approvals.</li>
+            <li><span class="tag">Safety</span> Default posture is conservative limits; scale only after proven controls.</li>
+            <li><span class="tag">Separation of Duties</span> No single person can unilaterally move material funds.</li>
+            <li><span class="tag">Auditability</span> Every approval and action produces an immutable audit trail.</li>
+          </ul>
+        </section>
+
+        <section class="card col-6">
+          <h2>Founding Roles (5-seat structure)</h2>
+          <p>Seat names are role-based. Legal names are defined off-page and only shared under NDA.</p>
+          <ul>
+            <li><strong>Founder / Chief Architect</strong> — technical authority, risk posture, system integrity.</li>
+            <li><strong>Co-Founder: Governance &amp; Compliance</strong> — policy, controls, regulator-facing narrative.</li>
+            <li><strong>Co-Founder: AI/Infra</strong> — model ops, security engineering, reliability.</li>
+            <li><strong>Co-Founder: Brand/Comms</strong> — category narrative, media, executive presence.</li>
+            <li><strong>Co-Founder: Partnerships</strong> — enterprise alliances, market entry execution.</li>
+          </ul>
+        </section>
+
+        <section class="card col-6">
+          <h2>Decision Bodies</h2>
+          <ul>
+            <li><strong>Executive Council</strong> (5 seats) — strategic decisions, cap table, major partnerships.</li>
+            <li><strong>Risk &amp; Treasury Committee</strong> (min. 3 seats) — liquidity limits, pull policies, emergency stops.</li>
+            <li><strong>Technical Change Control</strong> (Founder + AI/Infra + Compliance) — releases, migrations, key rotations.</li>
+            <li><strong>Audit Liaison</strong> (Compliance) — audit scope, evidence packs, responses.</li>
+          </ul>
+        </section>
+
+        <section class="card col-12">
+          <h2>Approval Matrix (what requires whose approval)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>Approval Required</th>
+                <th>Evidence Required</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Change <code>SAFE_PULL_LIMIT</code> / <code>MAX_PULL_RATIO</code></td>
+                <td><span class="ok">Risk &amp; Treasury Committee</span> (min. 3 seats)</td>
+                <td>Signed policy note + versioned config diff + test logs</td>
+                <td>Default conservative. Increase only after proven monitoring.</td>
+              </tr>
+              <tr>
+                <td>Create/modify <code>ledger_rules</code> (min/max/daily)</td>
+                <td><span class="ok">Compliance</span> + <span class="ok">Founder</span></td>
+                <td>SQL migration/seed + peer review + audit hash</td>
+                <td>All rules must be timestamped and attributable.</td>
+              </tr>
+              <tr>
+                <td>Key rotation (signing / custody)</td>
+                <td><span class="ok">Technical Change Control</span> (3 seats)</td>
+                <td>Rotation runbook + KMS/HSM evidence + post-rotation verification</td>
+                <td>Rotation is scheduled and also triggered by incident response.</td>
+              </tr>
+              <tr>
+                <td>Deploy to production</td>
+                <td><span class="ok">AI/Infra</span> + <span class="ok">Founder</span></td>
+                <td>CI logs + release notes + rollback plan + smoke tests</td>
+                <td>Production deploys are logged and tagged.</td>
+              </tr>
+              <tr>
+                <td>Emergency stop / freeze</td>
+                <td><span class="warn">Any 2 seats</span> (temporary) → council ratifies within 24h</td>
+                <td>Incident ticket + reason + scope of freeze</td>
+                <td>Safety override exists to prevent loss. Ratification ensures governance.</td>
+              </tr>
+              <tr>
+                <td>Material partnership / institutional onboarding</td>
+                <td><span class="ok">Executive Council</span> (majority)</td>
+                <td>Partner brief + risk summary + compliance checklist</td>
+                <td>No partnership without clear compliance boundaries.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="card col-8">
+          <h2>Treasury &amp; Liquidity Controls</h2>
+          <ul>
+            <li><strong>Guardianship posture:</strong> funds are treated as custodial/authorized flows, not discretionary capital.</li>
+            <li><strong>Hard caps:</strong> global limits (<code>SAFE_PULL_LIMIT</code>, <code>MAX_PULL_RATIO</code>) + per-channel rules (<code>ledger_rules</code>).</li>
+            <li><strong>Two-layer validation:</strong> pre-transaction validation + log of approval/rejection reason.</li>
+            <li><strong>Immutable logging:</strong> every action produces <code>audit_hash</code> and validation status.</li>
+            <li><strong>Kill-switch:</strong> immediate freeze for incident containment; requires later ratification.</li>
+          </ul>
+        </section>
+
+        <section class="card col-4">
+          <h2>Evidence Artifacts</h2>
+          <p>Every institutional conversation becomes evidence. Maintain these as versioned records:</p>
+          <ul>
+            <li>Config diffs (env + runtime)</li>
+            <li>Release notes + CI logs</li>
+            <li>DB migrations + seeds</li>
+            <li>On-chain receipts / hashes</li>
+            <li>Incident tickets + postmortems</li>
+          </ul>
+        </section>
+
+        <section class="card col-12">
+          <h2>Disclosure Boundary</h2>
+          <p>
+            This page is intentionally high-level. Detailed cap table, legal identities, bank specifics, and wallet addresses
+            are shared only under NDA and on a need-to-know basis.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>AgroNet Labs LLC — Governance Page. Public-safe version. For NDA details, reference <a href="https://agronet.bio">agronet.bio</a>.</div>
+    </div>
+  </footer>
+
+
+</body></html>
