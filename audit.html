@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AgroNet Labs — External Audit Checklist</title>
+  <style>
+    :root{
+      --bg0:#06160f; --bg1:#0b2a1a; --card:#0c2016;
+      --line:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --accent:#2fe39b; --gold:#d6b35a;
+      --ok:#2fe39b; --warn:#d6b35a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 700px at 15% 10%, rgba(47,227,155,.22), transparent 60%),
+                  radial-gradient(900px 600px at 90% 25%, rgba(214,179,90,.16), transparent 55%),
+                  linear-gradient(180deg, var(--bg0), var(--bg1));
+    }
+    header{padding:44px 20px 22px;border-bottom:1px solid var(--line)}
+    .wrap{max-width:1100px;margin:0 auto}
+    .kicker{color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+    h1{margin:10px 0 10px;font-size:34px;line-height:1.1}
+    .sub{color:var(--muted);max-width:900px;font-size:15px;line-height:1.6}
+    main{padding:22px 20px 56px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+    }
+    .col-12{grid-column:span 12}
+    .col-6{grid-column:span 6}
+    .col-4{grid-column:span 4}
+    @media (max-width:900px){.col-6,.col-4{grid-column:span 12} h1{font-size:28px}}
+    h2{margin:0 0 10px;font-size:16px}
+    p,li{color:var(--muted);font-size:14px;line-height:1.55}
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid var(--line);
+      padding:6px 10px;border-radius:999px;
+      color:var(--muted);font-size:12px
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px rgba(47,227,155,.5)}
+    .gold{background:var(--gold);box-shadow:0 0 14px rgba(214,179,90,.35)}
+    details{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px 12px;
+      background:rgba(0,0,0,.18);
+      margin:10px 0;
+    }
+    summary{cursor:pointer;color:#fff;font-weight:600}
+    .check{display:flex;align-items:flex-start;gap:10px;margin:8px 0}
+    input[type="checkbox"]{margin-top:3px; accent-color: var(--accent);}
+    code{color:#d9ffeF}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    footer{padding:22px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+  </style>
+<script src="https://www.kimi.com/sdk-seed.js" defer=""></script></head>
+<body>
+  <!-- Navigation -->
+  <nav style="position:sticky;top:0;z-index:100;background:rgba(6,22,15,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px 20px">
+    <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px">
+      <a href="./index.html" style="display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:#fff;text-decoration:none">
+        AgroNet<span style="color:var(--accent)">Labs</span>
+      </a>
+      <div style="display:flex;gap:24px;align-items:center">
+        <a href="./index.html#protocol" style="color:var(--muted);text-decoration:none;font-size:14px">Protocol</a>
+        <a href="./index.html#ecosystem" style="color:var(--muted);text-decoration:none;font-size:14px">Ecosystem</a>
+        <a href="./governanca.html" style="color:var(--muted);text-decoration:none;font-size:14px">Governance</a>
+        <a href="./institucional.html" style="color:var(--muted);text-decoration:none;font-size:14px">Data Room</a>
+        <a href="./audit.html" style="color:var(--accent);text-decoration:none;font-size:14px">Audit</a>
+        <a href="https://github.com/agronetlabs/ATF-AI" target="_blank" style="background:var(--accent);color:#000;padding:8px 16px;border-radius:8px;font-weight:600;text-decoration:none;font-size:14px">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap">
+      <div class="kicker">AgroNet Labs LLC</div>
+      <h1>External Audit Checklist</h1>
+      <p class="sub">
+        A practical, auditor-facing checklist for institutional readiness. This is not a pitch deck.
+        It is an evidence map: what exists, where it lives, and how it is verified.
+      </p>
+      <div class="row">
+        <span class="pill"><span class="dot"></span> Controls</span>
+        <span class="pill"><span class="dot gold"></span> Evidence</span>
+        <span class="pill">Version: <strong style="color:#fff">v1.0</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="grid">
+
+        <section class="card col-12">
+          <h2>How to Use This</h2>
+          <ul>
+            <li>Keep this page public-safe; store sensitive evidence in a private data room.</li>
+            <li>Every checkbox should link to an artifact: commit hash, document, log, or ticket.</li>
+            <li>Auditors trust consistency: one source of truth, versioned, reproducible.</li>
+          </ul>
+        </section>
+
+        <section class="card col-6">
+          <h2>1) Entity &amp; Legal Readiness</h2>
+          <details open="">
+            <summary>Corporate</summary>
+            <div class="check"><input type="checkbox"/><div>Entity docs: formation, operating agreement, ownership summary (NDA-only).</div></div>
+            <div class="check"><input type="checkbox"/><div>IP assignment: code and marks assigned to AgroNet Labs LLC.</div></div>
+            <div class="check"><input type="checkbox"/><div>Privacy policy + terms (public).</div></div>
+          </details>
+          <details>
+            <summary>Compliance posture</summary>
+            <div class="check"><input type="checkbox"/><div>Risk statement: what is and is not offered (no misleading claims).</div></div>
+            <div class="check"><input type="checkbox"/><div>Data retention rules + access policy.</div></div>
+          </details>
+        </section>
+
+        <section class="card col-6">
+          <h2>2) Treasury, Limits &amp; Controls</h2>
+          <details open="">
+            <summary>Liquidity constraints</summary>
+            <div class="check"><input type="checkbox"/><div>Global caps configured: <code>SAFE_PULL_LIMIT</code>, <code>MAX_PULL_RATIO</code>.</div></div>
+            <div class="check"><input type="checkbox"/><div>Per-channel rules in DB: <code>ledger_rules</code> (min/max/daily).</div></div>
+            <div class="check"><input type="checkbox"/><div>Approval matrix exists and is enforced (see Governance page).</div></div>
+          </details>
+          <details>
+            <summary>Audit trail</summary>
+            <div class="check"><input type="checkbox"/><div>Every action produces <code>validation_status</code> + <code>validation_reason</code>.</div></div>
+            <div class="check"><input type="checkbox"/><div>Immutable references: <code>audit_hash</code>, tx hashes, receipts.</div></div>
+          </details>
+        </section>
+
+        <section class="card col-12">
+          <h2>3) Codebase, SDLC &amp; Reproducibility</h2>
+          <details open="">
+            <summary>Build integrity</summary>
+            <div class="check"><input type="checkbox"/><div>CI runs: lint/format/test/build on every change.</div></div>
+            <div class="check"><input type="checkbox"/><div>Reproducible builds: pinned dependencies + lockfiles.</div></div>
+            <div class="check"><input type="checkbox"/><div>Release notes + rollback plan for production deploys.</div></div>
+          </details>
+          <details>
+            <summary>Database</summary>
+            <div class="check"><input type="checkbox"/><div>Migrations are versioned and reversible (up/down).</div></div>
+            <div class="check"><input type="checkbox"/><div>Seeds for <code>ledger_rules</code> and policies are controlled and logged.</div></div>
+          </details>
+        </section>
+
+        <section class="card col-6">
+          <h2>4) Security Controls</h2>
+          <details open="">
+            <summary>Keys &amp; custody</summary>
+            <div class="check"><input type="checkbox"/><div>Key management policy: storage, rotation, access, incident response.</div></div>
+            <div class="check"><input type="checkbox"/><div>No plaintext private keys committed; scanning in CI enabled.</div></div>
+          </details>
+          <details>
+            <summary>Application security</summary>
+            <div class="check"><input type="checkbox"/><div>AuthN/AuthZ: least privilege, role-based access to sensitive endpoints.</div></div>
+            <div class="check"><input type="checkbox"/><div>Rate limiting + request validation for critical endpoints.</div></div>
+            <div class="check"><input type="checkbox"/><div>Dependency scanning + vulnerability response process.</div></div>
+          </details>
+        </section>
+
+        <section class="card col-6">
+          <h2>5) On-chain &amp; Settlement Evidence</h2>
+          <details open="">
+            <summary>Network operations</summary>
+            <div class="check"><input type="checkbox"/><div>Network config documented (RPC providers, failover, monitoring).</div></div>
+            <div class="check"><input type="checkbox"/><div>Pre-transaction validation enforced before broadcast.</div></div>
+          </details>
+          <details>
+            <summary>Receipts</summary>
+            <div class="check"><input type="checkbox"/><div>Tx hashes stored with timestamps and deterministic request IDs.</div></div>
+            <div class="check"><input type="checkbox"/><div>Reconciliation procedure exists (ledger vs chain receipts).</div></div>
+          </details>
+        </section>
+
+        <section class="card col-12">
+          <h2>6) Monitoring, Incident Response &amp; Continuity</h2>
+          <details open="">
+            <summary>Operational readiness</summary>
+            <div class="check"><input type="checkbox"/><div>Centralized logs + alerts for failed validations and abnormal volumes.</div></div>
+            <div class="check"><input type="checkbox"/><div>Kill-switch implemented: immediate freeze + documented criteria.</div></div>
+            <div class="check"><input type="checkbox"/><div>Incident response runbook: detect → contain → recover → postmortem.</div></div>
+          </details>
+          <details>
+            <summary>BCP</summary>
+            <div class="check"><input type="checkbox"/><div>Backups, restore tests, and minimal downtime plan.</div></div>
+            <div class="check"><input type="checkbox"/><div>Provider risk: DNS/CDN/RPC escalation and fallbacks.</div></div>
+          </details>
+        </section>
+
+        <section class="card col-12">
+          <h2>7) Evidence Pack (what auditors ask for first)</h2>
+          <ul>
+            <li><strong>Governance page:</strong> roles + approval matrix + treasury controls.</li>
+            <li><strong>System diagram:</strong> components, data flows, where logs are produced.</li>
+            <li><strong>Config proof:</strong> current caps (<code>SAFE_PULL_LIMIT</code>, <code>MAX_PULL_RATIO</code>) + history of changes.</li>
+            <li><strong>Ledger rules:</strong> DB exports for <code>ledger_rules</code> + change history.</li>
+            <li><strong>Audit logs:</strong> samples showing <code>validation_status</code>, reasons, and <code>audit_hash</code>.</li>
+            <li><strong>Release evidence:</strong> CI logs + deploy tags + rollback docs.</li>
+          </ul>
+          <p>
+            Link this page from your hub (e.g., <a href="https://agronet.bio">agronet.bio</a>) and keep sensitive artifacts behind NDA.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>AgroNet Labs LLC — External Audit Checklist. Public-safe version. Sensitive artifacts are shared under NDA only.</div>
+    </div>
+  </footer>
+
+
+</body></html>
